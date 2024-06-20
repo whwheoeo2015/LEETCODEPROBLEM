@@ -1,0 +1,25 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+        int index = digits.length - 1;
+
+        if(digits[index] != 9){
+            digits[index] += 1;
+        } else {
+            while(index != -1 && digits[index] == 9){
+                digits[index] = 0;
+                index--;
+
+                if(index == -1){
+                    int[] newDigits = new int[digits.length + 1];
+                    newDigits[0] = 1;
+                    return newDigits;
+                }
+            }
+            digits[index] += 1;
+        }
+
+        return digits;
+
+    }
+}
