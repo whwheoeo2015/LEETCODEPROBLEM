@@ -1,0 +1,30 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int index = 0;
+        int secondIndex = 0;
+        int result = -1;
+        boolean op = true;
+        
+        while (op && index < haystack.length()) {
+            if (haystack.charAt(index) == needle.charAt(secondIndex)) {
+                index++;
+                secondIndex++;
+                
+                if (secondIndex == needle.length()) {
+                    result = index - secondIndex;
+                    op = false;
+                }
+            } else {
+                
+                index = index - secondIndex + 1;
+                secondIndex = 0;
+                
+                if (index >= haystack.length()) {
+                    op = false;
+                }
+            }
+        }
+
+        return result;
+    }
+}
