@@ -1,0 +1,39 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        int result = 0;
+
+        for(int i = 0; i<nums.length; i++){
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i], 1);
+            } else {
+                map.replace(nums[i], map.get(nums[i])+1);
+            }
+        }
+
+        Set<Integer> keySet = map.keySet();        
+        for (Integer key : keySet) {            
+            if(map.get(key) == 1){
+                result = key;
+            }        
+        }
+
+        return result;
+    }
+}
+
+// Using HashMap
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num; 
+        }
+        return result;
+    }
+}
+
+// Using xor
