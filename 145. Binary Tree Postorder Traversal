@@ -1,0 +1,27 @@
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        
+        List<Integer> result = new ArrayList<Integer>();
+        
+        if(root == null){
+            return result;
+        } 
+
+        return result = helper(root, result);
+    }
+
+    private List<Integer> helper(TreeNode root, List<Integer> result){
+        
+        if(root.left != null){
+            result = helper(root.left, result);
+        }
+
+        if(root.right != null){
+            result = helper(root.right, result);
+        }
+
+        result.add(root.val);
+
+        return result;
+    }
+}
